@@ -1,5 +1,5 @@
 import moment from "moment";
 
 export const relativeDate = (myDate: string) => {
-  return moment(myDate).startOf("hour").fromNow();
+  return moment.utc(myDate).local().startOf("hour").fromNow();
 };

@@ -72,7 +72,7 @@ export default function Map({ datas }: responceType) {
                 <div>{data.location}</div>
                 <div className="text-sm">Depth: {data.depth} KM </div>
                 <div className="text-sm font-extralight">
-                  {moment(data.date).format("LLL")}
+                  {moment.utc(data.date).local().format("LLL")}
                 </div>
                 <div className="text-sm font-extralight">
                   {relativeDate(data.date)}

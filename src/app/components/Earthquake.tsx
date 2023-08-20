@@ -37,7 +37,7 @@ export default function Earthquake({ data }: propsType) {
         <div>
           <div>{data.location}</div>
           <div className="text-sm">Depth: {data.depth} KM </div>
-          <div className="text-sm font-extralight">{moment(data.date).format("LLL")}</div>
+          <div className="text-sm font-extralight">{moment.utc(data.date).local().format("LLL")}</div>
           <div className="text-sm font-extralight">{relativeDate(data.date)}</div>
         </div>
       </div>
