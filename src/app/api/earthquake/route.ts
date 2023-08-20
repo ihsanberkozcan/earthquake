@@ -15,7 +15,7 @@ export async function GET() {
   url.searchParams.append("orderby", "timedesc");
   url.searchParams.append("minmag", "2");
 
-  const response = await fetch(url.toString());
+  const response = await fetch(url.toString(), { cache: "no-store" });
   const data = await response.json();
 
   return NextResponse.json({ data });
