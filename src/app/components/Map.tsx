@@ -7,6 +7,7 @@ import L from "leaflet";
 import { earthquakeDataType, responceType } from "../types/dataType";
 import moment from "moment";
 import { relativeDate } from "../utils/relativeDate";
+import { localDate } from "../utils/localDate";
 
 const redIcon = L.icon({
   iconUrl: "redIcon.png",
@@ -73,7 +74,7 @@ export default function Map({ datas }: responceType) {
                 <div>{data.location}</div>
                 <div className="text-sm">Depth: {data.depth} KM </div>
                 <div className="text-sm font-extralight">
-                  {moment.utc(data.date).local().format("LLL")}
+                  {localDate(data.date)}
                 </div>
                 <div className="text-sm font-extralight">
                   {relativeDate(data.date)}

@@ -2,6 +2,7 @@ import React from "react";
 import { earthquakeDataType } from "../types/dataType";
 import moment from "moment";
 import { relativeDate } from "../utils/relativeDate";
+import { localDate } from "../utils/localDate";
 interface propsType {
   data: earthquakeDataType;
 }
@@ -37,7 +38,7 @@ export default function Earthquake({ data }: propsType) {
         <div>
           <div>{data.location}</div>
           <div className="text-sm">Depth: {data.depth} KM </div>
-          <div className="text-sm font-extralight">{moment.utc(data.date).local().format("LLL")}</div>
+          <div className="text-sm font-extralight">{localDate(data.date)}</div>
           <div className="text-sm font-extralight">{relativeDate(data.date)}</div>
         </div>
       </div>

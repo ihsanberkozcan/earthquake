@@ -1,4 +1,4 @@
-import React from "react";
+
 import Earthquake from "./Earthquake";
 import { earthquakeDataType, responceType } from "../types/dataType";
 
