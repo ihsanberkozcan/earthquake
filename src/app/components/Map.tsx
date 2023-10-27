@@ -4,9 +4,10 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 import L from "leaflet";
-import { earthquakeDataType, responceType } from "../types/dataType";
+import { earthquakeDataType, MapType } from "../types/dataType";
 
 import MapPopup from "./MapPopup";
+import { useEffect, useRef } from "react";
 
 const redIcon = L.icon({
   iconUrl: "redIcon.png",
@@ -25,9 +26,37 @@ const Icon = L.icon({
   iconSize: [10, 10],
 });
 
-export default function Map({ datas }: responceType) {
+export default function Map({
+  datas,
+  selectedEarthquake,
+  setSelectedEarthquake,
+}: MapType) {
+  const mapRef = useRef(null);
+  const markerRefs = useRef<{ [key: string]: any }>({});
+
+  useEffect(() => {
+    markerRefs.current = {};
+    datas.forEach((data) => {
+      markerRefs.current[data.eventID] =
+        markerRefs.current[data.eventID] || null;
+    });
+  }, [datas]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map) {
+      return;
+    }
+    const marker = markerRefs.current[selectedEarthquake!];
+    if (marker) {
+      marker.openPopup();
+      setSelectedEarthquake(null);
+    }
+  }, [selectedEarthquake]);
+
   return (
     <MapContainer
+      ref={mapRef}
       center={{ lat: 39, lng: 35 }}
       zoom={6}
       style={{ minHeight: "300px", height: "100%", width: "100%" }}
@@ -39,6 +68,9 @@ export default function Map({ datas }: responceType) {
       />
       {datas?.map((data: earthquakeDataType, index) => (
         <Marker
+          ref={(marker) => {
+            markerRefs.current[data.eventID] = marker;
+          }}
           key={index}
           position={{
             lat: parseFloat(data.latitude),

@@ -11,7 +11,7 @@ export default function MapPopup({ data }: propsType) {
   return (
     <div className="flex">
       <div
-        className={`p-3 mr-2 rounded-lg w-12 h-12 text-center align-middle text-white ${
+        className={`p-3 mr-2 rounded-lg w-10 h-10 text-center align-middle text-white ${
           parseFloat(data.magnitude) >= 5.0
             ? "bg-red-500"
             : parseFloat(data.magnitude) >= 4.0
@@ -24,14 +24,14 @@ export default function MapPopup({ data }: propsType) {
         {data.magnitude}
       </div>
       <div>
-        <div className="text-sm font-extralight">
+        <div className="text-xs sm:text-sm font-medium">
           <div>{data.location}</div>
           <div>Depth: {data.depth} KM </div>
           <div>{localDate(data.date)}</div>
           <div>{relativeDate(data.date)}</div>
         </div>
 
-        <div className="my-1.5 h-px bg-gray-700"></div>
+        <div className="my-1 h-px bg-gray-700"></div>
         <div>
           <Share data={data} />
         </div>

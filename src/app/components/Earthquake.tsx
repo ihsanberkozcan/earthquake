@@ -1,17 +1,18 @@
 import React from "react";
 import { earthquakeDataType } from "../types/dataType";
-import moment from "moment";
+
 import { relativeDate } from "../utils/relativeDate";
 import { localDate } from "../utils/localDate";
 interface propsType {
   data: earthquakeDataType;
+  onEarthquakeClick: (earthquakeId: number) => void;
 }
 
-export default function Earthquake({ data }: propsType) {
-
+export default function Earthquake({ data, onEarthquakeClick }: propsType) {
   return (
     <div
-      className={`w-full mt-3 p-4 rounded-lg shadow-lg text-white ${
+      onClick={() => onEarthquakeClick(Number(data.eventID))}
+      className={`w-full mt-3 p-4 rounded-lg shadow-lg text-white cursor-pointer ${
         parseFloat(data.magnitude) >= 5.0
           ? "bg-red-600"
           : parseFloat(data.magnitude) >= 4.0
@@ -39,7 +40,9 @@ export default function Earthquake({ data }: propsType) {
           <div>{data.location}</div>
           <div className="text-sm">Depth: {data.depth} KM </div>
           <div className="text-sm font-extralight">{localDate(data.date)}</div>
-          <div className="text-sm font-extralight">{relativeDate(data.date)}</div>
+          <div className="text-sm font-extralight">
+            {relativeDate(data.date)}
+          </div>
         </div>
       </div>
     </div>

@@ -29,7 +29,7 @@ export default function Share({ data }: propsType) {
   };
   return (
     <div>
-      <button onClick={() => share("twitter")} className="m-0.5 p-1">
+      <button onClick={() => share("twitter")} className="m-0.5 p-1 mr-1">
         <RiTwitterXLine className="w-5 h-5" />
       </button>
       <button onClick={() => share("whatsapp")} className="m-0.5 p-1">

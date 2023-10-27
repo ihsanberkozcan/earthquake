@@ -17,5 +17,15 @@ export interface earthquakeDataType {
 }
 
 export interface responceType {
-  datas: Array<earthquakeDataType> | undefined;
+  datas: Array<earthquakeDataType>;
+}
+export interface MapType {
+  datas: Array<earthquakeDataType>;
+  selectedEarthquake: number | null;
+  setSelectedEarthquake: React.Dispatch<React.SetStateAction<number | null>>;
+}
+
+export interface EarthquakesType {
+  datas: Array<earthquakeDataType>;
+  onEarthquakeClick: (earthquakeId: number) => void;
 }
