@@ -10,7 +10,7 @@ import MapPopup from "./MapPopup";
 import { useEffect, useRef } from "react";
 
 const redIcon = L.icon({
-  iconUrl: "redIcon.png",
+  iconUrl: "red.png",
   iconSize: [10, 10],
 });
 const orangeIcon = L.icon({
