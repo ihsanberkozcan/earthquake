@@ -1,13 +1,17 @@
 import moment from "moment-timezone";
 import dynamic from "next/dynamic";
+
 const Content = dynamic(() => import("./components/Content"), {
   ssr: false,
   loading: () => <p className="text-white">Loading...</p>,
 });
 
 export default async function Home() {
+
+
   const fetchEarthquake = async () => {
-    const start = moment()
+    try {
+      const start = moment()
       .tz("Europe/Istanbul")
       .subtract(1, "days")
       .format("YYYY-MM-DD HH:mm:ss");
@@ -22,14 +26,18 @@ export default async function Home() {
 
     const response = await fetch(url.toString(), { cache: "no-cache" });
     const data = await response.json();
-    return data;
+    return { success: true, data };    
+    } catch (error) {
+      return { success: false, data:[] };    
+    }
+
   };
 
   const res = await fetchEarthquake();
 
   return (
     <main>
-      <Content datas={res}/>
+      <Content datas={res.data} success={res.success}/>
     </main>
   );
 }

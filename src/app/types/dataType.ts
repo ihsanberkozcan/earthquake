@@ -18,6 +18,7 @@ export interface earthquakeDataType {
 
 export interface responceType {
   datas: Array<earthquakeDataType>;
+  success: boolean
 }
 export interface MapType {
   datas: Array<earthquakeDataType>;
