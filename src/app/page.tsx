@@ -1,6 +1,5 @@
 import moment from "moment-timezone";
-import dynamic from "next/dynamic";
-
+import dynamic from "next/dynamic"; 
 const Content = dynamic(() => import("./components/Content"), {
   ssr: false,
   loading: () => <p className="text-white">Loading...</p>,

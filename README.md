@@ -8,7 +8,7 @@ The Earthquake App is a web application built using React, TypeScript, Next.js, 
 
 ## Demo
 
-[Earthquake](https://lastearthquakes.vercel.app/)
+[Earthquake](https://lastearthquakes.ihsanberkozcan.com)
 
 ## Screenshots
 ![Screenshot 2023-08-29 at 14-10-00 Earthquake](https://github.com/ihsanberkozcan/earthquake/assets/59116996/b5df01b1-ce9a-4f2e-b258-9f07eae52d71)
